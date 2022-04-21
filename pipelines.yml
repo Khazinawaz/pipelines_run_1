@@ -1,10 +1,10 @@
 pipelines:
   - name: Chronological_Pipeline
+    configuration:
+      chronological: true
     steps:
       - name: step1
         type: Bash
-        configuration:
-          chronological: true
         execution:
           onExecute:
             - echo "Step 1"
