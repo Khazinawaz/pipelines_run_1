@@ -11,6 +11,8 @@ pipelines:
         type: Bash
         configuration:
           chronological: true
+          inputSteps:
+            - name: step1
         execution:
           onExecute:
             - echo "Step 2"
