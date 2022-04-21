@@ -1,5 +1,5 @@
 pipelines:
-  - name: Chronological_Pipeline
+  - name: Chronological_Step
     steps:
       - name: step1
         type: Bash
