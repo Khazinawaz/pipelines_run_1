@@ -3,9 +3,15 @@ pipelines:
     steps:
       - name: step1
         type: Bash
+        execution:
+          onExecute:
+            - echo "Step 1"
+            - sleep 30s
+      - name: step2
+        type: Bash
         configuration:
           chronological: true
         execution:
           onExecute:
-            - echo "Step 1"
+            - echo "Step 2"
             - sleep 30s
