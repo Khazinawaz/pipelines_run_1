@@ -6,7 +6,7 @@ pipelines:
         execution:
           onExecute:
             - echo "Step 1"
-            - sleep 30s
+            - sleep 2s
       - name: step2
         type: Bash
         configuration:
@@ -16,4 +16,4 @@ pipelines:
         execution:
           onExecute:
             - echo "Step 2"
-            - sleep 30s
+            - sleep 2s
