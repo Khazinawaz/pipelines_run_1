@@ -10,6 +10,9 @@ pipelines:
     steps:
       - name: start
         type: Bash
+        configuration:
+          outputResources:
+             - name: res_test_1
         execution:
           onExecute:
             - printenv
