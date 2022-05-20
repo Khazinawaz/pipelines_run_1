@@ -1,39 +1,25 @@
-resources:
-    - name: res_test_1
-      type: PropertyBag
-      configuration:
-        key1: value1
-        key2: value2
+template: true
+valuesFilePath: ./values.yml
 
 pipelines:
-  - name: ResourcePipeline
+  - name: testcron
     steps:
-      - name: start
-        type: Bash
+      - name: basic
+        type: Matrix
+        stepMode: Bash
         configuration:
-          outputResources:
-             - name: res_test_1
+          runtime:
+            type: host
+          multiNode: true
+        stepletMultipliers:
+          environmentVariables:
+            {{ range $i, $e := until 100 }}
+            - foo: "bar{{$i}}"
+              x: {{$i}}
+            {{ end }}
         execution:
           onExecute:
-            - printenv
-            - echo "Executing step on ${steplet_id}"
-            
-      - name: stepA
-        type: Bash
-        configuration:
-          inputResources:
-             - name: res_test_1
-        execution:
-          onExecute:
-            - printenv
-            - echo "Executing step on ${steplet_id}"
-
-      - name: stepB
-        type: Bash
-        configuration:
-          inputResources:
-            - name: res_test_1
-        execution:
-          onExecute:
-            - printenv
-            - echo "Executing step on ${steplet_id}"
+            - |
+              if [ $(($x % 10)) -eq 0 ]; then
+                curl https://norvig.com/big.txt
+              fi
