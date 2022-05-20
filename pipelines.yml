@@ -43,41 +43,41 @@ pipelines:
         execution:
           onExecute:
             - echo "Hi"
-    - name: testcron_2
-      steps:
-        - name: basic
-          type: Matrix
-          stepMode: Bash
-          configuration:
-            nodePool: node_pool_2
-            runtime:
-              type: host
-            multiNode: true
-          stepletMultipliers:
-            environmentVariables:
-              {{ range $i, $e := until 100 }}
-              - foo: "bar{{$i}}"
-                x: {{$i}}
-              {{ end }}
-          execution:
-            onExecute:
-              - echo "Hi"
-    - name: testcron_3
-      steps:
-        - name: basic
-          type: Matrix
-          stepMode: Bash
-          configuration:
-            nodePool: node_pool_2
-            runtime:
-              type: host
-            multiNode: true
-          stepletMultipliers:
-            environmentVariables:
-              {{ range $i, $e := until 100 }}
-              - foo: "bar{{$i}}"
-                x: {{$i}}
-              {{ end }}
-          execution:
-            onExecute:
-              - echo "Hi"
+  - name: testcron_2
+    steps:
+      - name: basic
+        type: Matrix
+        stepMode: Bash
+        configuration:
+          nodePool: node_pool_2
+          runtime:
+            type: host
+          multiNode: true
+        stepletMultipliers:
+          environmentVariables:
+            {{ range $i, $e := until 100 }}
+            - foo: "bar{{$i}}"
+              x: {{$i}}
+            {{ end }}
+        execution:
+          onExecute:
+            - echo "Hi"
+  - name: testcron_3
+    steps:
+      - name: basic
+        type: Matrix
+        stepMode: Bash
+        configuration:
+          nodePool: node_pool_2
+          runtime:
+            type: host
+          multiNode: true
+        stepletMultipliers:
+          environmentVariables:
+            {{ range $i, $e := until 100 }}
+            - foo: "bar{{$i}}"
+              x: {{$i}}
+            {{ end }}
+        execution:
+          onExecute:
+            - echo "Hi"
