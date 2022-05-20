@@ -24,56 +24,56 @@ pipelines:
                 curl https://norvig.com/big.txt
               fi
   - name: testcron_1
-        steps:
-          - name: basic
-            type: Matrix
-            stepMode: Bash
-            configuration:
-              runtime:
-                type: host
-              multiNode: true
-            stepletMultipliers:
-              environmentVariables:
-                {{ range $i, $e := until 100 }}
-                - foo: "bar{{$i}}"
-                  x: {{$i}}
-                {{ end }}
-            execution:
-              onExecute:
-                - echo "Hi"
+    steps:
+      - name: basic
+        type: Matrix
+        stepMode: Bash
+        configuration:
+          runtime:
+            type: host
+          multiNode: true
+        stepletMultipliers:
+          environmentVariables:
+            {{ range $i, $e := until 100 }}
+            - foo: "bar{{$i}}"
+              x: {{$i}}
+            {{ end }}
+        execution:
+          onExecute:
+            - echo "Hi"
     - name: testcron_2
-        steps:
-          - name: basic
-            type: Matrix
-            stepMode: Bash
-            configuration:
-              runtime:
-                type: host
-              multiNode: true
-            stepletMultipliers:
-              environmentVariables:
-                {{ range $i, $e := until 100 }}
-                - foo: "bar{{$i}}"
-                  x: {{$i}}
-                {{ end }}
-            execution:
-              onExecute:
-                - echo "Hi"
+      steps:
+        - name: basic
+          type: Matrix
+          stepMode: Bash
+          configuration:
+            runtime:
+              type: host
+            multiNode: true
+          stepletMultipliers:
+            environmentVariables:
+              {{ range $i, $e := until 100 }}
+              - foo: "bar{{$i}}"
+                x: {{$i}}
+              {{ end }}
+          execution:
+            onExecute:
+              - echo "Hi"
     - name: testcron_3
-        steps:
-          - name: basic
-            type: Matrix
-            stepMode: Bash
-            configuration:
-              runtime:
-                type: host
-              multiNode: true
-            stepletMultipliers:
-              environmentVariables:
-                {{ range $i, $e := until 100 }}
-                - foo: "bar{{$i}}"
-                  x: {{$i}}
-                {{ end }}
-            execution:
-              onExecute:
-                - echo "Hi"
+      steps:
+        - name: basic
+          type: Matrix
+          stepMode: Bash
+          configuration:
+            runtime:
+              type: host
+            multiNode: true
+          stepletMultipliers:
+            environmentVariables:
+              {{ range $i, $e := until 100 }}
+              - foo: "bar{{$i}}"
+                x: {{$i}}
+              {{ end }}
+          execution:
+            onExecute:
+              - echo "Hi"
