@@ -6,6 +6,7 @@ pipelines:
         stepMode: Bash
         configuration:
           multiNode: true
+          chronological: true
         stepletMultipliers:
           environmentVariables:
             - key1: value1
@@ -16,23 +17,17 @@ pipelines:
               key2: v4
             - key1: v5
               key2: v6
-          runtimes:
-            - type: image
-              image:
-                auto:
-                  language: java
-                  versions:
-                    - 13.0
-
-            - type: image
-              image:
-                auto:
-                  language: node
-                  versions:
-                    - 8.17.0
         execution:
           onExecute:
             - sleep 5s
             - echo "Executing matrix step on ${steplet_id}"
+      - name: step_2
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: matrix_demo
+        execution:
+          onExecute:
+            - sleep 10s
               
               
