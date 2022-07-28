@@ -1,5 +1,5 @@
 pipelines:
- - name: Scenario_1
+  - name: Scenario_1
    steps:
     - name: step_A
       type: Bash
@@ -16,7 +16,6 @@ pipelines:
       execution:
         onExecute:
           - echo "Step 2"
-          
   - name: Scenario_2
     configuration:
       environmentVariables:
