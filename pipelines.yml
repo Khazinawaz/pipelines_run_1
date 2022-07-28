@@ -25,34 +25,34 @@ pipelines:
         - killB:
             allowCustom: true
             default: false
-      steps:
-        - name: step_A
-          type: Bash
-          execution:
-            onExecute:
-              - |
-                if [ "${killA}" = "true" ]; then
-                  exit 1
-                fi
-        - name: step_B
-          type: Bash
-          execution:
-            onExecute:
-              - |
-                if [ "${killB}" = "true" ]; then
-                  exit 1
-                fi
-        - name: step_C
-          type: Bash
-          configuration:
-            inputSteps:
-              - name: step_A
-                status:
-                  - failure
-                  - error
-                  - timeout
-              - name: step_B
-          execution:
-            onExecute:
-              - echo "Executing step_C"
-              - printenv
+    steps:
+      - name: step_A
+        type: Bash
+        execution:
+          onExecute:
+            - |
+              if [ "${killA}" = "true" ]; then
+                exit 1
+              fi
+      - name: step_B
+        type: Bash
+        execution:
+          onExecute:
+            - |
+              if [ "${killB}" = "true" ]; then
+                exit 1
+              fi
+      - name: step_C
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: step_A
+              status:
+                - failure
+                - error
+                - timeout
+            - name: step_B
+        execution:
+          onExecute:
+            - echo "Executing step_C"
+            - printenv
