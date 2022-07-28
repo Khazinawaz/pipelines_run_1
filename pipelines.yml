@@ -19,12 +19,12 @@ pipelines:
   - name: Scenario_2
     configuration:
       environmentVariables:
-        - killA:
-            allowCustom: true
-            default: false
-        - killB:
-            allowCustom: true
-            default: false
+        killA:
+          allowCustom: true
+          default: false
+        killB:
+          allowCustom: true
+          default: false
     steps:
       - name: step_A
         type: Bash
