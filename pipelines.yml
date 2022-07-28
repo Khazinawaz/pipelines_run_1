@@ -16,7 +16,7 @@ pipelines:
       execution:
         onExecute:
           - echo "Step 2"
-  - name: Scenario_2
+ - name: Scenario_2
     configuration:
       environmentVariables:
        - killA: 
