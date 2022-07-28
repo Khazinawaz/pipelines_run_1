@@ -1,5 +1,5 @@
 pipelines:
-  - name: Scenario_1
+ - name: Scenario_1
    steps:
     - name: step_A
       type: Bash
