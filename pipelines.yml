@@ -1,59 +1,58 @@
 pipelines:
- - name: Scenario_1
-   steps:
-    - name: step_A
-      type: Bash
-      execution: 
-        onExecute:
-          - echo "Step 1"
-    - name: step_B
-      type: Bash
-      configuration:
-        inputSteps:
-          - name: step_A
-            status:
-              - 'cancelled'
-      execution:
-        onExecute:
-          - echo "Step 2"
- - name: Scenario_2
-    configuration:
-      environmentVariables:
-       - killA: 
-           allowCustom: true
-           default: false    
-       - killB: 
-           allowCustom: true
-           default: false
+  - name: Scenario_1
     steps:
       - name: step_A
         type: Bash
         execution:
           onExecute:
-            - |
-              if [ "${killA}" = "true" ]; then
-                exit 1
-              fi
-
+            - echo "Step 1"
       - name: step_B
-        type: Bash
-        execution:
-          onExecute:
-            - |
-              if [ "${killB}" = "true" ]; then
-                exit 1
-              fi
-      - name: step_C
         type: Bash
         configuration:
           inputSteps:
             - name: step_A
               status:
-                - failure
-                - error
-                - timeout
-            - name: step_B
+                - "cancelled"
         execution:
           onExecute:
-            - echo "Executing step_C"
-            - printenv
+            - echo "Step 2"
+  - name: Scenario_2
+    configuration:
+      environmentVariables:
+        - killA:
+            allowCustom: true
+            default: false
+        - killB:
+            allowCustom: true
+            default: false
+      steps:
+        - name: step_A
+          type: Bash
+          execution:
+            onExecute:
+              - |
+                if [ "${killA}" = "true" ]; then
+                  exit 1
+                fi
+        - name: step_B
+          type: Bash
+          execution:
+            onExecute:
+              - |
+                if [ "${killB}" = "true" ]; then
+                  exit 1
+                fi
+        - name: step_C
+          type: Bash
+          configuration:
+            inputSteps:
+              - name: step_A
+                status:
+                  - failure
+                  - error
+                  - timeout
+              - name: step_B
+          execution:
+            onExecute:
+              - echo "Executing step_C"
+              - printenv
