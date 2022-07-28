@@ -22,10 +22,10 @@ pipelines:
         readOnly:
           killA:
             allowCustom: "true"
-            default: false
+            default: "false"
           killB:
             allowCustom: "true"
-            default: false
+            default: "false"
     steps:
       - name: step_A
         type: Bash
