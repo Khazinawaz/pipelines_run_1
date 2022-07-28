@@ -21,10 +21,10 @@ pipelines:
       environmentVariables:
         readOnly:
           killA:
-            allowCustom: "true"
+            allowCustom: true
             default: "false"
           killB:
-            allowCustom: "true"
+            allowCustom: true
             default: "false"
     steps:
       - name: step_A
