@@ -68,3 +68,68 @@ pipelines:
           onExecute:
             - echo "Executing step_C"
             - printenv
+  - name: Scenario_3
+    configuration:
+      environmentVariables:
+        readOnly:
+          sleep:
+            allowCustom: true
+            default: "1"
+    steps:
+      - name: trigger
+        type: Bash
+        execution:
+          onExecute:
+            - echo 'Start'
+      - name: step_A
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: trigger
+        execution:
+          onExecute:
+            - echo 'Success'
+      - name: step_B
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: trigger
+        execution:
+          onExecute:
+            - exit 1
+      - name: step_C
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: trigger
+        execution:
+          onExecute:
+            - sleep "${sleep}s"
+      - name: step_D
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: step_A
+            - name: step_B
+              status:
+                - failure
+            - name: step_C
+              status:
+                - timeout
+        execution:
+          onExecute:
+            - echo "Executing step_C"
+            - printenv
+
+      - name: step_E
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: step_D
+              status:
+                - success
+                - skipped
+        execution:
+          onExecute:
+            - echo "Executing step_C"
+            - printenv
