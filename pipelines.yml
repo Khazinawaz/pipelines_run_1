@@ -27,8 +27,16 @@ pipelines:
             allowCustom: true
             default: "false"
     steps:
+      - name: trigger
+        type: Bash
+        execution:
+          onExecute:
+            - 'Start'
       - name: step_A
         type: Bash
+        configuration:
+          inputSteps:
+            - name: trigger
         execution:
           onExecute:
             - |
@@ -37,6 +45,9 @@ pipelines:
               fi
       - name: step_B
         type: Bash
+        configuration:
+          inputSteps:
+            - name: trigger
         execution:
           onExecute:
             - |
