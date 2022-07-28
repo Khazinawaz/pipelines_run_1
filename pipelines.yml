@@ -19,6 +19,7 @@ pipelines:
   - name: Scenario_2
     configuration:
       environmentVariables:
+        readOnly: false
         killA:
           allowCustom: true
           default: false
