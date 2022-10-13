@@ -12,8 +12,6 @@ pipelines:
     steps:
       - name: step1
         type: Bash
-        configuration:
-          affinityGroup: test
         execution: 
           onExecute:
             - echo 'step1'
@@ -23,13 +21,11 @@ pipelines:
         configuration:
           inputSteps:
            - name: step1
-          affinityGroup: test
           envVarName: 'run_number'
 
       - name: step3
         type: UploadArtifact
         configuration:
-          affinityGroup: test
           inputSteps:
            - name: step1
           sourcePath: ./pipelines.yml
