@@ -21,12 +21,16 @@ pipelines:
       - name: step2
         type: test/PrintEnvVar
         configuration:
+          inputSteps:
+           - name: step1
           affinityGroup: test
           envVarName: 'run_number'
 
       - name: step3
         type: UploadArtifact
         configuration:
+          inputSteps:
+           - name: step1
           sourcePath: ./pipelines.yml
           targetPath: jfrogpipelines/uploads
           integrations:
