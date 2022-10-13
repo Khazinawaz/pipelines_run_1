@@ -29,6 +29,7 @@ pipelines:
       - name: step3
         type: UploadArtifact
         configuration:
+          affinityGroup: test
           inputSteps:
            - name: step1
           sourcePath: ./pipelines.yml
