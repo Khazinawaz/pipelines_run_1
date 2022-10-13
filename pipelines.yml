@@ -23,9 +23,6 @@ pipelines:
         configuration:
           affinityGroup: test
           envVarName: 'run_number'
-        execution: 
-          onExecute:
-            - echo "Step 2"
 
       - name: step3
         type: UploadArtifact
