@@ -5,7 +5,7 @@ resources:
       path: Khazinawaz/pipelines_run_1
       branches:
         include: ^master$
-      gitProvider: nawaz_gh
+      gitProvider: nawaz_gh1
 
 pipelines:
   - name: PipelinesExt
