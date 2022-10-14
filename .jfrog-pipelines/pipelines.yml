@@ -35,6 +35,6 @@ pipelines:
           sourcePath: ./pipelines.yml
           targetPath: jfrogpipelines/uploads
           integrations:
-            - name: art_int
+            - name: art
           inputResources:
             - name: self_repo
