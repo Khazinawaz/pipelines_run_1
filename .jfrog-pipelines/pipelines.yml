@@ -25,7 +25,16 @@ pipelines:
           inputSteps:
            - name: step1
           envVarName: 'run_number'
-
+      - name: step4
+        type: Bash
+        configuration:
+          inputSteps:
+           - name: step3
+          nodePool: u20
+          runtime: host
+        execution:
+          onExecute:
+           - echo 'its working'
       - name: step3
         type: UploadArtifact
         configuration:
