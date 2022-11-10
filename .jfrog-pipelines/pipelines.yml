@@ -24,6 +24,16 @@ resources:
   #     webhookName: incoming
 
 pipelines:
+  - name: Pipeline_2
+    steps:
+     - name: step1
+       type: Bash
+       configuration:
+         inputResources:
+           - name: property_bag
+       execution:
+        onExecute:
+          - echo "hello world"
   - name: Pipeline
     steps:
       - name: step1
@@ -37,7 +47,6 @@ pipelines:
             - echo "Step1" >> file1
             - add_run_files ./file1 file
             - add_run_variables "step1_var=1"
-            - sleep 2s
 
       - name: step2
         type: Bash
