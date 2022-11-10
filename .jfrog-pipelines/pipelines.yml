@@ -34,7 +34,7 @@ pipelines:
        execution:
         onExecute:
           - echo "hello world"
-          - add_run_description "a long text of description"
+          - update_run_description "a long text of description"
   - name: Pipeline
     steps:
       - name: step1
@@ -48,7 +48,7 @@ pipelines:
             - echo "Step1" >> file1
             - add_run_files ./file1 file
             - add_run_variables "step1_var=1"
-            - add_run_description "a long longgggggggg ggg g g g g g g g g text of description"
+            - update_run_description "a long longgggggggg ggg g g g g g g g g text of description"
 
       - name: step2
         type: Bash
