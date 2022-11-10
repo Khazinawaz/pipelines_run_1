@@ -4,7 +4,7 @@ resources:
     configuration:
       path: Khazinawaz/pipelines_run_1
       branches:
-        include: ^tests-failing$
+        include: ^master$
       gitProvider: nawaz_gh
 
   - name: matrix_property_bag_in
@@ -28,6 +28,9 @@ pipelines:
     steps:
       - name: step1
         type: Bash
+        configuration:
+          inputResources:
+            - name: self_repo
         execution: 
           onExecute:
             - echo "Step 1"
