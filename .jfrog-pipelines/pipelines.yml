@@ -69,6 +69,7 @@ pipelines:
             - date=$(date)
             - write_output property_bag "date=$date"
             - add_run_variables "step2_var=2"
+            - update_run_description "Current date is ${date}"
 
       - name: step4
         type: Bash
