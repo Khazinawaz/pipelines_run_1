@@ -1,5 +1,5 @@
 resources:
-  - name: self_repo
+  - name: self_repo1
     type: GitRepo
     configuration:
       path: Khazinawaz/pipelines_run_1
@@ -41,7 +41,7 @@ pipelines:
         type: Bash
         configuration:
           inputResources:
-            - name: self_repo
+            - name: self_repo1
         execution: 
           onExecute:
             - echo "Step 1"
