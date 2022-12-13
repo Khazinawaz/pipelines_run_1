@@ -59,7 +59,7 @@ pipelines:
     postRun:
       configuration:
         inputResources:
-          - name: propertyo_bag
+          - name: property_bag
         outputResources:
           - name: output_2
         integrations:
