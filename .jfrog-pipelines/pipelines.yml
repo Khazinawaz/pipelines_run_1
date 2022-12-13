@@ -46,16 +46,16 @@ pipelines:
           - update_run_description "a long text of description"
   - name: Pipeline
     preRun:
-    configuration:
-      inputResources:
-        - name: property_bag
-      outputResources:
-        - name: output_1
-      integrations:
-        - name: nawaz_gh
-    execution:
-      onExecute:
-        - echo 'Im running pre step'
+      configuration:
+        inputResources:
+          - name: property_bag
+        outputResources:
+          - name: output_1
+        integrations:
+          - name: nawaz_gh
+      execution:
+        onExecute:
+          - echo 'Im running pre step'
     postRun:
       configuration:
         inputResources:
