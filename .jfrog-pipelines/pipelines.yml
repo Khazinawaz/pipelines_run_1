@@ -47,8 +47,6 @@ pipelines:
   - name: Pipeline
     preRun:
       configuration:
-        inputResources:
-          - name: property_bag
         outputResources:
           - name: output_1
         integrations:
