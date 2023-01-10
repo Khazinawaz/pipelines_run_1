@@ -1,5 +1,5 @@
 pipelines:
-  - name: RunHooksPipeline2
+  - name: RunHooksPipeline3
     preRun:
       execution:
         onExecute:
