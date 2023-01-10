@@ -1,6 +1,6 @@
 pipelines:
   - name: RunHooksPipeline3
-    postRun:
+    preRun:
       execution:
         onExecute:
           - echo 'hello'
