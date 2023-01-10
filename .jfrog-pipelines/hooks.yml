@@ -1,5 +1,9 @@
 pipelines:
   - name: RunHooksPipeline2
+    preRun:
+      execution:
+        onExecute: 
+          - echo 'hello'
     steps:
       - name: A1
         type: Bash
