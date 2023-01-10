@@ -1,5 +1,10 @@
 pipelines:
   - name: RunHooksPipeline2
+    preRun:
+      execution:
+        onExecute:
+          - printenv
+          - echo "Executing Post Run"
     postRun:
       execution:
         onExecute:
