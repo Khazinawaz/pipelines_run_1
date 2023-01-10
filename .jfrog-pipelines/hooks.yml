@@ -3,6 +3,10 @@ pipelines:
     preRun:
       execution:
         onExecute: 
+          - echo 'hello'      
+    postRun:
+      execution:
+        onExecute: 
           - echo 'hello'
     steps:
       - name: A1
