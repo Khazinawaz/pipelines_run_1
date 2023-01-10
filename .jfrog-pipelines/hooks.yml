@@ -1,7 +1,6 @@
 pipelines:
   - name: RunHooksPipeline2
     preRun:
-      name: My_Pre_Run
       execution:
         onExecute:
           - echo 'hello'
