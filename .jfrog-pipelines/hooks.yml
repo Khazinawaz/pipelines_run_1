@@ -1,6 +1,6 @@
 pipelines:
   - name: RunHooksPipeline2
-    postRun:
+    preRun:
       execution:
         onExecute:
           - printenv
