@@ -45,26 +45,6 @@ pipelines:
           - echo "hello world"
           - update_run_description "a long text of description"
   - name: Pipeline
-    preRun:
-      configuration:
-        outputResources:
-          - name: output_1
-        integrations:
-          - name: nawaz_gh
-      execution:
-        onExecute:
-          - echo 'Im running pre step'
-    postRun:
-      configuration:
-        inputResources:
-          - name: property_bag
-        outputResources:
-          - name: output_2
-        integrations:
-          - name: nawaz_gh
-      execution:
-        onExecute:
-          - echo 'Im running post step'
     steps:
       - name: step1
         type: Bash
