@@ -1,10 +1,5 @@
 pipelines:
   - name: RunHooksPipeline2
-    preRun:
-      execution:
-        onExecute:
-          - printenv
-          - echo "Executing Post Run"
     steps:
       - name: A1
         type: Bash
