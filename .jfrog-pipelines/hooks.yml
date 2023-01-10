@@ -27,3 +27,12 @@ pipelines:
           onExecute:
             - printenv
             - echo "Step B"
+      - name: B3
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: A1
+        execution:
+          onExecute:
+            - printenv
+            - echo "Step B"
