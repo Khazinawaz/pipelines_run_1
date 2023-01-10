@@ -1,0 +1,37 @@
+pipelines:
+  - name: RunHooksPipeline1
+    preRun:
+      execution:
+        onExecute:
+          - printenv
+          - echo "Executing Pre Run"
+    postRun:
+      execution:
+        onExecute:
+          - printenv
+          - echo "Executing Post Run"
+    steps:
+      - name: A1
+        type: Bash
+        execution:
+          onExecute:
+            - printenv
+            - echo "Step A"
+      - name: B2
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: A1
+        execution:
+          onExecute:
+            - printenv
+            - echo "Step B"
+      - name: C3
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: A1
+        execution:
+          onExecute:
+            - printenv
+            - echo "Step C"
