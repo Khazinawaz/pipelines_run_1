@@ -5,12 +5,6 @@ pipelines:
         onExecute:
           - printenv
           - echo "Executing Post Run"
-    preRun:
-      execution:
-        onExecute:
-          - printenv
-          - echo "Executing Pre Run"
-          - echo 'changed'
     steps:
       - name: A1
         type: Bash
