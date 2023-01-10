@@ -18,7 +18,7 @@ pipelines:
           onExecute:
             - printenv
             - echo "Step A"
-      - name: B2
+      - name: A2
         type: Bash
         configuration:
           inputSteps:
@@ -26,8 +26,8 @@ pipelines:
         execution:
           onExecute:
             - printenv
-            - echo "Step B"
-      - name: B3
+            - echo "Step A"
+      - name: B2
         type: Bash
         configuration:
           inputSteps:
