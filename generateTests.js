@@ -3,11 +3,11 @@ const { faker } = require('@faker-js/faker');
 const async = require('async');
 class TestCasesGenerator {
   constructor () {
-    this.suites = process.env.SUITES || 1000;
-    this.passedTests = process.env.PASSED || 25;
-    this.failureTests = process.env.FAILURE || 25;
-    this.errorTests = process.env.ERROR || 25;
-    this.skippedTests = process.env.SKIPPED || 25;
+    this.suites = Number.parseInt(process.env.SUITES, 10) || 1000;
+    this.passedTests = Number.parseInt(process.env.PASSED) || 25;
+    this.failureTests = Number.parseInt(process.env.FAILURE) || 25;
+    this.errorTests = Number.parseInt(process.env.ERROR) || 25;
+    this.skippedTests =  Number.parseInt(process.env.SKIPPED) || 25;
     this.currentCount = 0;
   }
   async generate() {
