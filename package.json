@@ -17,8 +17,9 @@
   },
   "homepage": "https://github.com/Khazinawaz/pipelines_run_1#readme",
   "dependencies": {
-    "@types/faker": "^6.6.9",
     "@faker-js/faker": "^7.6.0",
+    "@types/faker": "^6.6.9",
+    "async": "^3.2.4",
     "junit-report-builder": "^3.0.1"
   }
 }

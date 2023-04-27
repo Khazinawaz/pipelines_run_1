@@ -1,25 +1,37 @@
-const builder = require('junit-report-builder');
+const Builder = require('junit-report-builder');
 const { faker } = require('@faker-js/faker');
-
-
+const async = require('async');
 class TestCasesGenerator {
   constructor () {
-    this.suites = process.env.SUITES || 1;
-    this.passedTests = process.env.PASSED || 1;
-    this.failureTests = process.env.FAILURE || 1;
-    this.errorTests = process.env.ERROR || 1;
-    this.skippedTests = process.env.SKIPPED || 1;
+    this.suites = process.env.SUITES || 1000;
+    this.passedTests = process.env.PASSED || 25;
+    this.failureTests = process.env.FAILURE || 25;
+    this.errorTests = process.env.ERROR || 25;
+    this.skippedTests = process.env.SKIPPED || 25;
+    this.currentCount = 0;
   }
-  generate() {
-    for (let i = 0; i<this.suites; i++) {
-      console.log('Generating suite', i);
+  async generate() {
+    await async.timesLimit(this.suites, 5, async (suiteId) => {
+      await this.generateWithBuilder(suiteId);
+      this.currentCount+= 1;
+      console.log('Completed suite', this.currentCount);
+    }, () => {
+      console.log('Done');
+    })
+  }
+
+  async generateWithBuilder(i) {
+    const builder = Builder.newBuilder();
+    return new Promise((res, rej) => {
       const suite = builder.testSuite().name(faker.random.words(40));
       this.generatePassedTestCases(suite);
       this.generateFailedTestCases(suite);
       this.generateErrorTestCases(suite);
       this.generateSkippedTestCases(suite);
-    }
-    builder.writeTo('test-report.xml');
+      builder.writeTo(`reports/reports-${i}.xml`);
+      return res();
+    })
+   
   }
   generatePassedTestCases(suite) {
     for (let i = 0; i<this.passedTests; i++) {
