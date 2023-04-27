@@ -12,6 +12,7 @@ class TestCasesGenerator {
   }
   generate() {
     for (let i = 0; i<this.suites; i++) {
+      console.log('Generating suite', i);
       const suite = builder.testSuite().name(faker.random.words(40));
       this.generatePassedTestCases(suite);
       this.generateFailedTestCases(suite);
