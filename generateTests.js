@@ -4,10 +4,10 @@ const async = require('async');
 class TestCasesGenerator {
   constructor () {
     this.suites = Number.parseInt(process.env.SUITES, 10) || 1000;
-    this.passedTests = Number.parseInt(process.env.PASSED) || 25;
-    this.failureTests = Number.parseInt(process.env.FAILURE) || 25;
-    this.errorTests = Number.parseInt(process.env.ERROR) || 25;
-    this.skippedTests =  Number.parseInt(process.env.SKIPPED) || 25;
+    this.passedTests = Number.parseInt(process.env.PASSED) || 250;
+    this.failureTests = Number.parseInt(process.env.FAILURE) || 250;
+    this.errorTests = Number.parseInt(process.env.ERROR) || 250;
+    this.skippedTests =  Number.parseInt(process.env.SKIPPED) || 250;
     this.currentCount = 0;
   }
   async generate() {
@@ -23,7 +23,7 @@ class TestCasesGenerator {
   async generateWithBuilder(i) {
     const builder = Builder.newBuilder();
     return new Promise((res, rej) => {
-      const suite = builder.testSuite().name(faker.random.words(40));
+      const suite = builder.testSuite().name(faker.random.words(4));
       this.generatePassedTestCases(suite);
       this.generateFailedTestCases(suite);
       this.generateErrorTestCases(suite);
@@ -37,34 +37,34 @@ class TestCasesGenerator {
     for (let i = 0; i<this.passedTests; i++) {
       suite.testCase()
         .className(faker.internet.userName('Class '))
-        .name(faker.random.words(20));
+        .name(faker.random.words(2));
     }
   }
   generateFailedTestCases(suite) {
     for (let i = 0; i<this.failureTests; i++) {
       const testCase = suite.testCase()
-      testCase.stacktrace(faker.random.words(1000))
+      testCase.stacktrace(faker.random.words(100))
       testCase.className(faker.internet.userName('Class '))
-      testCase.name(faker.random.words(1000))
-      testCase.failure(faker.random.words(1000))
+      testCase.name(faker.random.words(5))
+      testCase.failure(faker.random.words(5))
     }
   }
   generateErrorTestCases(suite) {
     for (let i = 0; i<this.errorTests; i++) {
       suite.testCase()
-        .stacktrace(faker.random.words(1000))
+        .stacktrace(faker.random.words(100))
         .className(faker.internet.userName('Class '))
-        .name(faker.random.words(50))
-        .error(faker.random.words(20))
+        .name(faker.random.words(5))
+        .error(faker.random.words(2))
     }
   }
   generateSkippedTestCases(suite) {
     for (let i = 0; i<this.skippedTests; i++) {
       suite.testCase()
-        .stacktrace(faker.random.words(1000))
+        .stacktrace(faker.random.words(100))
         .className(faker.internet.userName('Class '))
-        .name(faker.random.words(20))
-        .skipped(faker.random.words(100))
+        .name(faker.random.words(2))
+        .skipped(faker.random.words(10))
     }
   }
 }
