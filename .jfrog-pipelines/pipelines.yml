@@ -19,3 +19,7 @@ pipelines:
           onExecute:
             - pushd $res_self_repo_tests_resourcePath
             - npm install
+            - node generateTests.js
+            - mkdir -p testReports
+            - mv test-report.xml testReports/test-report.xml
+            - save_tests testReports
