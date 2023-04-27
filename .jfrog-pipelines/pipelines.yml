@@ -14,11 +14,11 @@ pipelines:
         type: Bash
         configuration:
           environmentVariables:
-            "SUITES": 1
-            "PASSED": 1
-            "FAILURE": 1
-            "ERROR": 1
-            "SKIPPED": 1
+            "SUITES": 1000
+            "PASSED": 250
+            "FAILURE": 250
+            "ERROR": 250
+            "SKIPPED": 250
           inputResources:
             - name: self_repo_tests
         execution: 

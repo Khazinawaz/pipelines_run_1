@@ -43,7 +43,7 @@ class TestCasesGenerator {
   generateFailedTestCases(suite) {
     for (let i = 0; i<this.failureTests; i++) {
       const testCase = suite.testCase()
-      testCase.stacktrace(faker.random.words(100))
+      testCase.stacktrace(faker.random.words(10))
       testCase.className(faker.internet.userName('Class '))
       testCase.name(faker.random.words(5))
       testCase.failure(faker.random.words(5))
@@ -52,7 +52,7 @@ class TestCasesGenerator {
   generateErrorTestCases(suite) {
     for (let i = 0; i<this.errorTests; i++) {
       suite.testCase()
-        .stacktrace(faker.random.words(100))
+        .stacktrace(faker.random.words(10))
         .className(faker.internet.userName('Class '))
         .name(faker.random.words(5))
         .error(faker.random.words(2))
@@ -61,7 +61,7 @@ class TestCasesGenerator {
   generateSkippedTestCases(suite) {
     for (let i = 0; i<this.skippedTests; i++) {
       suite.testCase()
-        .stacktrace(faker.random.words(100))
+        .stacktrace(faker.random.words(10))
         .className(faker.internet.userName('Class '))
         .name(faker.random.words(2))
         .skipped(faker.random.words(10))
