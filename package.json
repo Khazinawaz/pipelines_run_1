@@ -1,0 +1,24 @@
+{
+  "name": "pipelines_run_1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "matrix.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Khazinawaz/pipelines_run_1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Khazinawaz/pipelines_run_1/issues"
+  },
+  "homepage": "https://github.com/Khazinawaz/pipelines_run_1#readme",
+  "dependencies": {
+    "@types/faker": "^6.6.9",
+    "@faker-js/faker": "^7.6.0",
+    "junit-report-builder": "^3.0.1"
+  }
+}
